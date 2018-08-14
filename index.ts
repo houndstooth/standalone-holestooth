@@ -1,1 +1,1 @@
-export { holestoothEffect } from './effects/index'
+export { holestoothEffect } from './effects'

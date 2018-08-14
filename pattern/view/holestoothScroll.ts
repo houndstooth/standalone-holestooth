@@ -1,5 +1,5 @@
 import { from, HALF, Px, to } from '../../../../src'
-import { holestoothTileSize } from '../tile/index'
+import { holestoothTileSize } from '../tile'
 
 const holestoothScroll: () => Px[] =
 	(): Px[] => {

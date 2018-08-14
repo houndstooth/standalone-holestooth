@@ -1,31 +1,26 @@
-import { NamedEffect } from '../../../src'
-import { BLACK, RED, TRANSPARENT, to, from, getCurrentLayer } from '../../../src'
-import { holestoothTileSize, holestoothScroll } from '../pattern/index'
-import { AssignmentMode, WHITE } from '../../../src/pattern/color'
-import { HOLESTOOTH_DEPTH } from '../constants'
+import { AssignmentMode, BLACK, NamedEffect, to, TRANSPARENT, WHITE } from '../../../src'
+import { HOLESTOOTH_DEPTH, HOLESTOOTH_HOLD_OFF_TO_ENJOY_THE_EFFECT } from '../constants'
+import { holestoothScroll, holestoothSupertile, holestoothTileResolution, holestoothTileSize } from '../pattern'
+
+import HOLESTOOTH_DESCRIPTION from './holestoothDescription'
 
 const holestoothEffect: NamedEffect = {
 	basePattern: {
 		colorSettings: {
-			colorSet: to.ColorSet([ BLACK, WHITE, TRANSPARENT ]),
 			colorAssignmentSettings: {
 				assignmentMode: AssignmentMode.Supertile,
-				supertile: to.Supertile([
-					[ [ 1 ], [ 2, 1, 2, 0 ], [ 0 ], [ 2, 0, 2, 1 ] ],
-					[ [ 1, 2, 0, 2 ], [ 2 ], [ 0, 2, 1, 2 ], [ 2 ] ],
-					[ [ 0 ], [ 2, 0, 2, 1 ], [ 1 ], [ 2, 1, 2, 0 ] ],
-					[ [ 0, 2, 1, 2 ], [ 2 ], [ 1, 2, 0, 2 ], [ 2 ] ],
-				]),
+				supertile: holestoothSupertile.default,
 			},
+			colorSet: to.ColorSet([ BLACK, WHITE, TRANSPARENT ]),
 		},
 		gridSettings: {
-			tileResolution: (HOLESTOOTH_DEPTH - from.Layer(getCurrentLayer.default())) * 100,
+			tileResolution: holestoothTileResolution.default,
 		},
 		layerSettings: {
-			endLayer: to.Layer(HOLESTOOTH_DEPTH - 1),
+			endLayer: to.Layer(HOLESTOOTH_DEPTH - HOLESTOOTH_HOLD_OFF_TO_ENJOY_THE_EFFECT),
 		},
 	},
-	description: 'holestooth is the coolest fractal',
+	description: HOLESTOOTH_DESCRIPTION,
 	layersPattern: {
 		tileSettings: {
 			tileSize: holestoothTileSize.default,
@@ -34,7 +29,7 @@ const holestoothEffect: NamedEffect = {
 			scroll: holestoothScroll.default,
 		},
 	},
-	name: 'holesooth',
+	name: 'holestooth',
 }
 
 export { holestoothEffect }
